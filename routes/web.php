@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+Route::get('/signin', function () {
+    return view('signin');
+});
+
 Route::get('/', function () {
     return view('dashboard');
 });
