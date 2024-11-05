@@ -14,8 +14,8 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/hitung', function () {
-    return view('hitung');
+Route::get('/perhitungan', function () {
+    return view('perhitungan');
 });
 
 Route::get('/default', function () {
