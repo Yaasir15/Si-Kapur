@@ -392,7 +392,6 @@
     var myDropzone = new Dropzone(drop, {
       url: "/file/post",
       addRemoveLinks: true
-
     });
   </script>
   <!-- Kanban scripts -->

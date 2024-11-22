@@ -53,8 +53,9 @@
       </div>
       <!--form panels-->
       <div class="row">
-        <div class="col-12 col-lg-8 m-auto">
-          <form class="multisteps-form__form mb-8">
+        <div class="col-12 col-lg-9 m-auto">
+          <form class="multisteps-form__form mb-8" method="post" action="{{url('tambah')}}" enctype="multipart/form-data">
+            @csrf
             <!--single form panel-->
             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
               <h5 class="font-weight-bolder">Lokasi TPS</h5>
@@ -72,16 +73,18 @@
                   </div>
                   <div class="col-12 col-sm-6 mb-4">
                     <label>Kecamatan</label>
-                    <select class="form-control" name="ckec" id="choices-kec" required>
+                    <select class="form-control" name="kec" id="choices-kec" required>
                       <option value="">-- Pilih Kecamatan --</option>
-                      <option value="Choice 2">Real Estate</option>
-                      <option value="Choice 3">Electronics</option>
+                      @foreach ($kecamatan as $kec)
+                      <option value="{{ $kec->kode }}">{{ $kec->nama }}</option>
+                      @endforeach
                     </select>
                     <label>Kelurahan</label>
                     <select class="form-control" name="kel" id="choices-kel" required>
                       <option value="">-- Pilih Kelurahan --</option>
-                      <option value="Choice 2">Small</option>
-                      <option value="Choice 3">Large</option>
+                      @foreach ($kelurahan as $kel)
+                      <option value="{{ $kel->kode }}">{{ $kel->nama }}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="col-12">
@@ -203,16 +206,16 @@
                 <div class="row mt-3">
                   <div class="col-12">
                     <label>Upload Dokumen</label>
-                    <div action="/file-upload" class="form-control dropzone" id="dokumen">
+                    <div class="form-control dropzone" id="dokumen">
                       <div class="fallback">
-                        <input name="dokumen" type="file" multiple required />
+                        <input name="dokumen[]" type="file" multiple required />
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="button-row d-flex mt-4">
                   <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-                  <button class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">Send</button>
+                  <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Send</button>
                 </div>
               </div>
             </div>
